@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions, Image, Button } from 'react-native';
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
+import { List, ListItem, FlatList } from 'react-native-elements';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
@@ -17,11 +18,10 @@ class SelectionScreen extends React.Component {
         {id: '4', uri: require('./assets/img-4.jpg')},
         {id: '5', uri: require('./assets/img-5.jpg')}
       ],
-      empty: require('./assets/empty.jpg'),
-
+      restaurantList: [],
     }
-    this.btnClickPass = this.btnClickPass.bind(this)
-    this.btnClickAdd = this.btnClickAdd.bind(this)
+    // this.btnClickPass = this.btnClickPass.bind(this)
+    // this.btnClickAdd = this.btnClickAdd.bind(this)
   }
 
   btnClickChoice() {
@@ -39,6 +39,9 @@ class SelectionScreen extends React.Component {
 
   btnClickAdd() {
     this.btnClickChoice();
+    if (this.state.photos[0].id !== 'empty') {
+      this.setState({ restaurantList: [...this.state.restaurantList, this.state.photos[0]]});
+    }
   }
 
   render() {
@@ -63,8 +66,8 @@ class SelectionScreen extends React.Component {
           </View>
         </View>
         <View style={styles.buttonContainer}>
-          <Button style={styles.button} color="#ff0000" onPress={this.btnClickPass} title='Pass' accessibilityLabel='Pass button'></Button>
-          <Button style={styles.button} color='#0000ff' onPress={this.btnClickAdd} title='Add' accessibilityLabel='Add button'></Button>
+          <Button style={styles.button} color="#ff0000" onPress={() => this.btnClickPass()} title='Pass' accessibilityLabel='Pass button'></Button>
+          <Button style={styles.button} color='#0000ff' onPress={() => this.btnClickAdd()} title='Add' accessibilityLabel='Add button'></Button>
         </View>
       </View>
     );
@@ -78,16 +81,57 @@ class SelectionScreen extends React.Component {
 class RestaurantsScreen extends React.Component {
   render() {
     return (
-      <View style={styles.top}>
-        <Button
-          title="Selection"
-          onPress={() => this.props.navigation.navigate('Selection')}
-        />
+      <View style={styles.container}>
+        <View style={styles.top}>
+          <Button
+            title="Selection"
+            onPress={() => this.props.navigation.navigate('Selection')}
+          />
+        </View>
+        <View style={{flex: 1}}>
+            <RestaurantsList />
+        </View>
       </View>
     );
   }  
 }
 
+// RESTAURANTS LIST COMPONENT
+class RestaurantsList extends React.Component {
+
+    constructor(props) {
+    super(props)
+    
+    this.state = {
+      photos: [
+        {id: '1', uri: require('./assets/img-1.jpg')},
+        {id: '2', uri: require('./assets/img-2.jpg')},
+        {id: '3', uri: require('./assets/img-3.jpg')},
+        {id: '4', uri: require('./assets/img-4.jpg')},
+        {id: '5', uri: require('./assets/img-5.jpg')}
+      ],
+      restaurantList: [],
+    }
+  }
+
+  render() {
+    return (
+      <View>
+        <Text>List of Restaurants</Text>
+        <List>
+          {
+            this.state.photos.map((item) => (
+              <ListItem
+                key={item.id}
+                title={item.id}
+              />
+            ))
+          }
+        </List>
+      </View>
+    );
+  }
+}
 
 //  CREATE NAVIGATION NAVIGATOR
 
@@ -125,7 +169,7 @@ const styles = StyleSheet.create({
   },
 
   imageContainer: {
-    height: SCREEN_HEIGHT -260,
+    height: SCREEN_HEIGHT -300,
     width: SCREEN_WIDTH,
     padding: 10,
     position: 'absolute'
@@ -143,7 +187,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    height: 175,
+    height: 225,
     // backgroundColor: 'white',
   },
 
