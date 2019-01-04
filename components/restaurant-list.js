@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View, Dimensions, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Image, Button, ScrollView } from 'react-native';
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
 import { List, ListItem, Header, Icon } from 'react-native-elements';
 import { MaterialDialog } from 'react-native-material-dialog';
@@ -21,8 +21,9 @@ class RestaurantList extends React.Component {
         leftComponent={<Icon name='menu' color='#fff' underlayColor='#3D6DCC' onPress={() => this.props.navigation.openDrawer()} />}
         centerComponent={{ text: 'RESTAURANTS', style: { color: '#fff' } }}
         rightComponent={<Icon name='home' color='#fff' underlayColor='#3D6DCC' onPress={() => this.props.navigation.navigate('Home')} />}
-        outerContainerStyles={{height: 80}}
+        outerContainerStyles={{height: 80}} 
       />
+      <ScrollView>
         <Text style={styles.top}>Restaurant List</Text>
         <List>
           {
@@ -47,6 +48,7 @@ class RestaurantList extends React.Component {
             {this.props.viewRestaurant.description}
           </Text>
         </MaterialDialog>
+      </ScrollView>
       </View>
     );
   }
