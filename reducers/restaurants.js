@@ -9,7 +9,7 @@ export const initialState = {
         {id: '2', uri: require('../assets/img-2.jpg')},
         {id: '3', uri: require('../assets/img-3.jpg')},
         {id: '4', uri: require('../assets/img-4.jpg')},
-        {id: '5', uri: require('../assets/img-5.jpg')} 
+        {id: '5', uri: require('../assets/img-5.jpg')}
     ],
     selectedRestaurants: [],
     empty: {id: 'empty', uri: require('../assets/empty.jpg')},

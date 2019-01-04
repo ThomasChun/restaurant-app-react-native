@@ -10,24 +10,27 @@ const SCREEN_WIDTH = Dimensions.get('window').width
 class SelectionScreen extends React.Component {
 
   btnClickPass() {
-    if (this.props.restaurants.length > 1) {
+    if (this.props.restaurants.length > 0) {
       this.props.dispatch(passRestaurant());
     }
   }
 
   btnClickAdd() {
     this.btnClickPass();
-    if (this.props.restaurants.length > 1) {
+    if (this.props.restaurants.length > 0) {
       this.props.dispatch(addRestaurant(this.props.restaurants[0]))
     }
   }
 
   render() {
 
-    let displayImage = this.props.restaurants[0].uri;
+    // let displayImage = this.props.restaurants[0].uri;
+    let displayImage;
 
-    if (this.props.restaurants.length === 1) { 
+    if (this.props.restaurants.length === 0) { 
       displayImage = this.props.empty.uri;
+    } else {
+      displayImage = this.props.restaurants[0].uri;
     }
 
     return (
@@ -50,9 +53,13 @@ class SelectionScreen extends React.Component {
             <Image style={styles.image} source={displayImage} /> 
           </View>
         </View>
-        <View style={styles.buttonContainer}>
-          <Button style={styles.button} color="#ff0000" onPress={() => this.btnClickPass()} title='Pass' accessibilityLabel='Pass button'></Button>
-          <Button style={styles.button} color='#0000ff' onPress={() => this.btnClickAdd()} title='Add' accessibilityLabel='Add button'></Button>
+        <View>
+          {this.props.restaurants.length > 0 &&
+            <View style={styles.buttonContainer}>
+              <Button style={styles.button} color="#ff0000" onPress={() => this.btnClickPass()} title='Pass' accessibilityLabel='Pass button'></Button>
+              <Button style={styles.button} color='#0000ff' onPress={() => this.btnClickAdd()} title='Add' accessibilityLabel='Add button'></Button>
+            </View>
+          }
         </View>
       </View>
     );
