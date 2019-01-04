@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Dimensions, Image, Button } from 'react-native';
-import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
 import { addRestaurant, passRestaurant } from '../actions/restaurants';
 import { Header, Icon } from 'react-native-elements';
 
@@ -29,7 +28,6 @@ class SelectionScreen extends React.Component {
 
   render() {
 
-    // let displayImage = this.props.restaurants[0].uri;
     let displayImage;
 
     if (this.props.restaurants.length === 0) { 
@@ -88,9 +86,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    // alignItems: 'center',
     justifyContent: 'center',
-    // backgroundColor: 'lightgrey',
   },
 
   top: {
@@ -119,14 +115,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     height: 225,
-    // backgroundColor: 'white',
   },
 
   button: {
     color: '#000000',
-    // width: '25%',
     borderColor: '#0000ff',
-    // backgroundColor: 'white',
     borderWidth: 2,
     borderRadius: 10,
   }

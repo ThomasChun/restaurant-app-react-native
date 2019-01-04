@@ -1,10 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View, Dimensions, Image, Button } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Header, Icon } from 'react-native-elements';
-
-const SCREEN_HEIGHT = Dimensions.get('window').height
-const SCREEN_WIDTH = Dimensions.get('window').width
 
 class HomeScreen extends React.Component {
 
@@ -62,13 +59,7 @@ export default connect(mapStateToProps)(HomeScreen);
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // alignItems: 'center',
-    justifyContent: 'center',
-    // backgroundColor: 'lightgrey',
-  },
-
+  
   sectionText: {
     fontWeight: 'bold',
     fontSize: 16,
@@ -88,37 +79,5 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     flexWrap: 'wrap',
   },
-
-  imageContainer: {
-    height: SCREEN_HEIGHT -300,
-    width: SCREEN_WIDTH,
-    padding: 10,
-    position: 'absolute'
-  },
-
-  image: {
-    flex: 1,
-    height: null,
-    width: null,
-    resizeMode: 'cover',
-    borderRadius: 15
-  },
-
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    height: 225,
-    // backgroundColor: 'white',
-  },
-
-  button: {
-    color: '#000000',
-    // width: '25%',
-    borderColor: '#0000ff',
-    // backgroundColor: 'white',
-    borderWidth: 2,
-    borderRadius: 10,
-  }
 
 });

@@ -6,7 +6,7 @@ import {
   DELETE_SELECTED_RESTAURANT
 } from '../actions/restaurants';
 
-export const initialState = {
+export const initialState = { 
     restaurants: [
         {id: 1, name: 'Pizza Oven', uri: require('../assets/img-1.jpg'), visible: false, description: 'test 1 - description of restaurant will go here'},
         {id: 2, name: 'Salad Bar', uri: require('../assets/img-2.jpg'), visible: false, description: 'test 2 - description of restaurant will go here'},
@@ -22,7 +22,6 @@ export const initialState = {
     selectedRestaurants: [],
     viewRestaurant: {},
     empty: {id: 'empty', uri: require('../assets/empty.jpg')},
-    loading: false,
     error: null,
     visible: false,
 }
