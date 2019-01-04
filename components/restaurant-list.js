@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Dimensions, Image, Button } from 'react-native';
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
 import { List, ListItem } from 'react-native-elements';
+import { MaterialDialog } from 'react-native-material-dialog';
+import { selectRestaurant, clearSelectedRestaurant } from '../actions/restaurants';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
@@ -21,10 +23,21 @@ class RestaurantList extends React.Component {
                 title={item.name}
                 avatar={item.uri}
                 hideChevron
+                onPress={() => this.props.dispatch(selectRestaurant(item))}
               />
             ))
           }
         </List>
+        <MaterialDialog
+          title={this.props.viewRestaurant.name}
+          visible={this.props.visible}
+          okLabel='CLOSE'
+          onOk={() => this.props.dispatch(clearSelectedRestaurant())}
+          onCancel={() => this.props.dispatch(clearSelectedRestaurant())}>
+          <Text style={styles.dialogText}>
+            {this.props.viewRestaurant.description}
+          </Text>
+        </MaterialDialog>
       </View>
     );
   }
@@ -33,7 +46,9 @@ class RestaurantList extends React.Component {
 const mapStateToProps = state => ({
   restaurants: state.restaurant.restaurants,
   empty: state.restaurant.empty,
-  selectedRestaurants: state.restaurant.selectedRestaurants
+  selectedRestaurants: state.restaurant.selectedRestaurants,
+  visible: state.restaurant.visible,
+  viewRestaurant: state.restaurant.viewRestaurant,
 });
 
 export default connect(mapStateToProps)(RestaurantList);
