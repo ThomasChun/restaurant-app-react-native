@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { Header, Icon } from 'react-native-elements';
 
 class HomeScreen extends React.Component {
@@ -38,6 +38,8 @@ class HomeScreen extends React.Component {
             The selection screen renders images for the user to flip through and either 'pass' or 'add' a restaurant to their collection that can later be viewed on the restaurants screen. 
           </Text>
 
+          <Button style={styles.button} color='#0000ff' onPress={() => this.props.navigation.navigate('Selection')} title='GO TO SELECTION SCREEN' accessibilityLabel='Add button'></Button>
+
           <Text h1 style={styles.sectionText}>
             RESTAURANTS SCREEN
           </Text>
@@ -45,6 +47,8 @@ class HomeScreen extends React.Component {
           <Text style={styles.textContent}>
             The restaurants screen lists all of the restaurants the user has selected to 'add' from the selections screen. If you click on a restaurant from the list, a dialog box will pop up with the restaurants information. Users can remove restaurants from their restaurants list by first clicking on the restaurant name, then pressing the 'delete' button.
           </Text>
+
+          <Button style={styles.button} color='#0000ff' onPress={() => this.props.navigation.navigate('Restaurants')} title='GO TO RESTAURANTS SCREEN' accessibilityLabel='Add button'></Button>
         </View>
       </View>
     );
@@ -64,6 +68,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
     marginBottom: 10,
+    marginTop: 20,
   },
 
   top: {
@@ -78,6 +83,14 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     flexWrap: 'wrap',
+  },
+
+  button: {
+    marginBottom: 15,
+    color: '#000000',
+    borderColor: '#0000ff',
+    borderWidth: 1,
+    borderRadius: 10,
   },
 
 });
