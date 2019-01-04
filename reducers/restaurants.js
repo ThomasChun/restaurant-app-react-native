@@ -3,6 +3,7 @@ import {
   PASS_RESTAURANT,
   SELECT_RESTAURANT,
   CLEAR_SELECTED_RESTAURANT,
+  DELETE_SELECTED_RESTAURANT
 } from '../actions/restaurants';
 
 export const initialState = {
@@ -47,6 +48,11 @@ export default function restaurantsReducer(state=initialState, action) {
   } else if (action.type === CLEAR_SELECTED_RESTAURANT) {
     return Object.assign({}, state, {
       viewRestaurant: {},
+      visible: false
+    })
+  } else if (action.type === DELETE_SELECTED_RESTAURANT) {
+    return Object.assign({}, state, {
+      selectedRestaurants: state.selectedRestaurants.filter(restaurant => restaurant !== action.restaurant),
       visible: false
     })
   }

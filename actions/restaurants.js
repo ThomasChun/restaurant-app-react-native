@@ -19,3 +19,9 @@ export const CLEAR_SELECTED_RESTAURANT = 'CLEAR_SELECTED_RESTAURANT';
 export const clearSelectedRestaurant = () => ({
   type: CLEAR_SELECTED_RESTAURANT
 });
+
+export const DELETE_SELECTED_RESTAURANT = 'DELETE_SELECTED_RESTAURANT';
+export const deleteSelectedRestaurant = (restaurant) => ({
+  type: DELETE_SELECTED_RESTAURANT,
+  restaurant
+});

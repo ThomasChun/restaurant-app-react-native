@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Dimensions, Image, Button, ScrollView } from 'r
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
 import { List, ListItem, Header, Icon } from 'react-native-elements';
 import { MaterialDialog } from 'react-native-material-dialog';
-import { selectRestaurant, clearSelectedRestaurant } from '../actions/restaurants';
+import { selectRestaurant, clearSelectedRestaurant, deleteSelectedRestaurant } from '../actions/restaurants';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
@@ -44,7 +44,7 @@ class RestaurantList extends React.Component {
           okLabel='CLOSE'
           cancelLabel='DELETE'
           onOk={() => this.props.dispatch(clearSelectedRestaurant())}
-          onCancel={() => this.props.dispatch(clearSelectedRestaurant())}>
+          onCancel={() => this.props.dispatch(deleteSelectedRestaurant(this.props.viewRestaurant))}>
           <Text style={styles.dialogText}>
             {this.props.viewRestaurant.description}
           </Text>

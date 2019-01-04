@@ -38,7 +38,7 @@ class HomeScreen extends React.Component {
           </Text>
 
           <Text style={styles.textContent}>
-            The selection screen renders images for the user to flip through and either pass or add a restaurant to their collection that can later be viewed on the restaurants page. 
+            The selection screen renders images for the user to flip through and either 'pass' or 'add' a restaurant to their collection that can later be viewed on the restaurants screen. 
           </Text>
 
           <Text h1 style={styles.sectionText}>
@@ -46,7 +46,7 @@ class HomeScreen extends React.Component {
           </Text>
 
           <Text style={styles.textContent}>
-            The restaurants screen lists all of the restaurants the user has selected to add from the selections screen. If you click on a restaurant from the list, a dialog box will pop up with the restaurants information.
+            The restaurants screen lists all of the restaurants the user has selected to 'add' from the selections screen. If you click on a restaurant from the list, a dialog box will pop up with the restaurants information. Users can remove restaurants from their restaurants list by first clicking on the restaurant name, then pressing the 'delete' button.
           </Text>
         </View>
       </View>
