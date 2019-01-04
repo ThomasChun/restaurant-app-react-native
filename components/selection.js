@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
   noRestaurants: {
     marginBottom: 125,
     textAlign: 'center',
+    fontSize: 16,
   },
   container: {
     flex: 1,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 import { Header, Icon } from 'react-native-elements';
 
 class HomeScreen extends React.Component {
@@ -13,6 +13,7 @@ class HomeScreen extends React.Component {
 
     return (
       <View style={{flex: 1}}>
+      
         <View>
           <Header
             leftComponent={<Icon name='menu' color='#fff' underlayColor='#3D6DCC' onPress={() => this.props.navigation.openDrawer()} />}
@@ -21,11 +22,12 @@ class HomeScreen extends React.Component {
             outerContainerStyles={{height: 80}}
           />
         </View>
+        
         <View style={styles.top}>
+        <ScrollView>
           <Text h1 style={styles.sectionText}>
             RESTAURANT SELECTION APP
           </Text>
-
           <Text style={styles.textContent}>
             Click on the icon at the top left of the screen to open the navigation bar. The navigation bar provides access to the Home, Selection, and Restaurant screens.
           </Text>
@@ -49,6 +51,7 @@ class HomeScreen extends React.Component {
           </Text>
 
           <Button style={styles.button} color='#0000ff' onPress={() => this.props.navigation.navigate('Restaurants')} title='GO TO RESTAURANTS SCREEN' accessibilityLabel='Add button'></Button>
+           </ScrollView>
         </View>
       </View>
     );
@@ -66,9 +69,10 @@ const styles = StyleSheet.create({
   
   sectionText: {
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 20,
     marginBottom: 10,
     marginTop: 20,
+    textAlign: 'center',
   },
 
   top: {
@@ -83,6 +87,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     flexWrap: 'wrap',
+    fontSize: 16,
   },
 
   button: {
