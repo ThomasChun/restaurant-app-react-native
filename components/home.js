@@ -78,14 +78,14 @@ const styles = StyleSheet.create({
   top: {
     height: 60,
     alignItems: 'center',
-    paddingTop: 20
+    paddingTop: 20,
+    flex: 1,
   },
 
   textContent: {
     marginBottom: 15,
     paddingLeft: 10,
     paddingRight: 10,
-    flex: 1,
     flexWrap: 'wrap',
   },
 
