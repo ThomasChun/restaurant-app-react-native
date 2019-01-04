@@ -39,11 +39,12 @@ class SelectionScreen extends React.Component {
     }
 
     return (
-      <View style={styles.container}>
+      <View style={styles.container}> 
         <Header
           leftComponent={<Icon name='menu' color='#fff' underlayColor='#3D6DCC' onPress={() => this.props.navigation.openDrawer()} />}
           centerComponent={{ text: 'SELECT RESTAURANTS', style: { color: '#fff' } }}
-          rightComponent={{ icon: 'home', color: '#fff' }}
+          rightComponent={<Icon name='home' color='#fff' underlayColor='#3D6DCC' onPress={() => this.props.navigation.navigate('Home')} />}
+          outerContainerStyles={{height: 80}}
         />
         <View style={styles.top}>
         </View>

@@ -5,11 +5,15 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Selection from './components/selection';
 import RestaurantList from './components/restaurant-list';
+import Home from './components/home';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
 
 const MyDrawerNavigator = createDrawerNavigator({
+  Home: {
+    screen: Home,
+  },
   Selection: {
     screen: Selection,
   },

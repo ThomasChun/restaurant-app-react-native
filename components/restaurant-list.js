@@ -20,7 +20,8 @@ class RestaurantList extends React.Component {
       <Header
         leftComponent={<Icon name='menu' color='#fff' underlayColor='#3D6DCC' onPress={() => this.props.navigation.openDrawer()} />}
         centerComponent={{ text: 'RESTAURANTS', style: { color: '#fff' } }}
-        rightComponent={<Icon name='home' color='#fff' underlayColor='#3D6DCC' onPress={() => console.log('hello')} />}
+        rightComponent={<Icon name='home' color='#fff' underlayColor='#3D6DCC' onPress={() => this.props.navigation.navigate('Home')} />}
+        outerContainerStyles={{height: 80}}
       />
         <Text style={styles.top}>Restaurant List</Text>
         <List>
@@ -73,7 +74,10 @@ const styles = StyleSheet.create({
   top: {
     height: 60,
     alignItems: 'center',
-    paddingTop: 40
+    paddingTop: 30,
+    paddingLeft: 5,
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 
   imageContainer: {
