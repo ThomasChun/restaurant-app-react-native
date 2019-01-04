@@ -5,11 +5,11 @@ import {
 
 export const initialState = {
     restaurants: [
-        {id: '1', uri: require('../assets/img-1.jpg')},
-        {id: '2', uri: require('../assets/img-2.jpg')},
-        {id: '3', uri: require('../assets/img-3.jpg')},
-        {id: '4', uri: require('../assets/img-4.jpg')},
-        {id: '5', uri: require('../assets/img-5.jpg')}
+        {name: 'Restaurant 1', uri: require('../assets/img-1.jpg')},
+        {name: 'Restaurant 2', uri: require('../assets/img-2.jpg')},
+        {name: 'Restaurant 3', uri: require('../assets/img-3.jpg')},
+        {name: 'Restaurant 4', uri: require('../assets/img-4.jpg')},
+        {name: 'Restaurant 5', uri: require('../assets/img-5.jpg')} 
     ],
     selectedRestaurants: [],
     empty: {id: 'empty', uri: require('../assets/empty.jpg')},

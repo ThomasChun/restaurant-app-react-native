@@ -1,32 +1,48 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Dimensions, Image, Button } from 'react-native';
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
-import { Provider } from 'react-redux';
-import store from './store';
-import Selection from './components/selection';
-import RestaurantList from './components/restaurant-list'
+import { List, ListItem } from 'react-native-elements';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
 
+class RestaurantList extends React.Component {
 
-export default class App extends React.Component {
   render() {
     return (
-      <Provider store={store}>
-        <View style={styles.container}>
-          <RestaurantList /> 
-        </View>
-      </Provider>
+      <View>
+        <Text style={styles.top}>Restaurant List</Text>
+        <List>
+          {
+            this.props.restaurants.map((item) => (
+              <ListItem
+                key={item.name}
+                title={item.name}
+                avatar={item.uri}
+                hideChevron
+              />
+            ))
+          }
+        </List>
+      </View>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  restaurants: state.restaurant.restaurants,
+  empty: state.restaurant.empty,
+  selectedRestaurants: state.restaurant.selectedRestaurants
+});
+
+export default connect(mapStateToProps)(RestaurantList);
 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
+    alignItems: 'center',
     // justifyContent: 'center',
     // backgroundColor: 'lightgrey',
   },
@@ -34,7 +50,7 @@ const styles = StyleSheet.create({
   top: {
     height: 60,
     alignItems: 'center',
-    paddingTop: 20
+    paddingTop: 40
   },
 
   imageContainer: {
