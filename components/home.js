@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
   textContent: {
     marginBottom: 15,
     paddingLeft: 10,
-    paddingRight: 10
+    paddingRight: 10,
+    flexWrap: 'wrap',
   },
 
   imageContainer: {
