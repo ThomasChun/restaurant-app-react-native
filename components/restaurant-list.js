@@ -42,6 +42,7 @@ class RestaurantList extends React.Component {
           title={this.props.viewRestaurant.name}
           visible={this.props.visible}
           okLabel='CLOSE'
+          cancelLabel='DELETE'
           onOk={() => this.props.dispatch(clearSelectedRestaurant())}
           onCancel={() => this.props.dispatch(clearSelectedRestaurant())}>
           <Text style={styles.dialogText}>

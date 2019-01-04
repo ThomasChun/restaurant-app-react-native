@@ -60,6 +60,13 @@ class SelectionScreen extends React.Component {
               <Button style={styles.button} color='#0000ff' onPress={() => this.btnClickAdd()} title='Add' accessibilityLabel='Add button'></Button>
             </View>
           }
+          {this.props.restaurants.length === 0 &&
+            <View>
+              <Text style={styles.noRestaurants}> 
+                No restaurants left!
+              </Text>
+            </View>
+          }
         </View>
       </View>
     );
@@ -75,6 +82,10 @@ export default connect(mapStateToProps)(SelectionScreen);
 
 
 const styles = StyleSheet.create({
+  noRestaurants: {
+    marginBottom: 125,
+    textAlign: 'center',
+  },
   container: {
     flex: 1,
     // alignItems: 'center',
