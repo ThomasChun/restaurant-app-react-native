@@ -1,27 +1,36 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions, Image, Button } from 'react-native';
-import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
+import { createAppContainer, createStackNavigator, StackActions, NavigationActions, createDrawerNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
 import store from './store';
 import Selection from './components/selection';
-import RestaurantList from './components/restaurant-list'
+import RestaurantList from './components/restaurant-list';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
 
+const MyDrawerNavigator = createDrawerNavigator({
+  Selection: {
+    screen: Selection,
+  },
+  Restaurants: {
+    screen: RestaurantList,
+  },
+});
+
+const Navigator = createAppContainer(MyDrawerNavigator);
 
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <RestaurantList /> 
+          <Navigator />
         </View>
       </Provider>
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {

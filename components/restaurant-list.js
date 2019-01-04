@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Dimensions, Image, Button } from 'react-native';
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
-import { List, ListItem } from 'react-native-elements';
+import { List, ListItem, Header, Icon } from 'react-native-elements';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { selectRestaurant, clearSelectedRestaurant } from '../actions/restaurants';
 
@@ -10,14 +10,22 @@ const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
 
 class RestaurantList extends React.Component {
+  static navigationOptions = {
+    drawerLabel: 'Restaurants',
+  };
 
   render() {
     return (
       <View>
+      <Header
+        leftComponent={<Icon name='menu' color='#fff' underlayColor='#3D6DCC' onPress={() => this.props.navigation.openDrawer()} />}
+        centerComponent={{ text: 'RESTAURANTS', style: { color: '#fff' } }}
+        rightComponent={<Icon name='home' color='#fff' underlayColor='#3D6DCC' onPress={() => console.log('hello')} />}
+      />
         <Text style={styles.top}>Restaurant List</Text>
         <List>
           {
-            this.props.restaurants.map((item) => (
+            this.props.selectedRestaurants.map((item) => (
               <ListItem
                 key={item.name}
                 title={item.name}

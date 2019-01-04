@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Dimensions, Image, Button } from 'react-native';
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
 import { addRestaurant, passRestaurant } from '../actions/restaurants';
+import { Header, Icon } from 'react-native-elements';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
@@ -22,6 +23,10 @@ class SelectionScreen extends React.Component {
     }
   }
 
+  static navigationOptions = {
+    drawerLabel: 'Selection',
+  };
+
   render() {
 
     // let displayImage = this.props.restaurants[0].uri;
@@ -35,18 +40,12 @@ class SelectionScreen extends React.Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.top}>
-          <Button
-          title="Restaurants"
-          onPress={() => {
-            this.props.navigation.dispatch(StackActions.reset({
-              index: 0,
-              actions: [
-                NavigationActions.navigate({ routeName: 'Restaurants' })
-              ],
-            }))
-          }}
+        <Header
+          leftComponent={<Icon name='menu' color='#fff' underlayColor='#3D6DCC' onPress={() => this.props.navigation.openDrawer()} />}
+          centerComponent={{ text: 'SELECT RESTAURANTS', style: { color: '#fff' } }}
+          rightComponent={{ icon: 'home', color: '#fff' }}
         />
+        <View style={styles.top}>
         </View>
         <View style={{flex: 1}}>
           <View style={styles.imageContainer}>
